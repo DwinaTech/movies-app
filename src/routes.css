@@ -1,0 +1,16 @@
+.side-bar {
+  height: 100vh;
+  background-color: #9c9c9c;
+  padding: 0;
+  overflow: hidden;
+}
+
+.side-bar .nav-link.active {
+  border-radius: 0;
+}
+
+.side-bar .nav-link.disabled {
+  color: #0f58aa;
+  font-size: 20px;
+  font-weight: bold;
+}
