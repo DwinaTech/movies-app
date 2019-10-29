@@ -1,0 +1,9 @@
+.moves {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.moves .card{
+    margin-bottom: 20px;
+    width: 100% !important;
+}
