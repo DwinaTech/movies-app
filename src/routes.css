@@ -1,8 +1,12 @@
 .side-bar {
-  height: 100vh;
   background-color: #9c9c9c;
   padding: 0;
   overflow: hidden;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .side-bar .nav-link.active {
@@ -13,4 +17,12 @@
   color: #0f58aa;
   font-size: 20px;
   font-weight: bold;
+}
+
+.main-contents {
+  position: fixed;
+  right: 0;
+  overflow-y: auto;
+  height: 100%;
+  overflow-x: hidden;
 }
