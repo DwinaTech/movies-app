@@ -28,8 +28,8 @@ class index extends Component {
                 release: move["UK release date"]
               };
               return (
-                <Col xs={12} sm={12} md={4}>
-                  <MoveCard {...newProps} key={move["Film"]} />
+                <Col key={move["Film"]} xs={12} sm={12} md={4}>
+                  <MoveCard {...newProps} />
                 </Col>
               );
             })
