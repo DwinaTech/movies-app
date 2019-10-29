@@ -1,5 +1,6 @@
 import React from "react";
 import SideBar from "./SideBar";
+import Moves from "./components/Moves";
 import { Container, Row, Col } from "react-bootstrap";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./routes.css";
@@ -14,7 +15,7 @@ function Routes() {
           </Col>
           <Col className="main-contents" xs={9}>
             <Route exact path="/" render={() => <h1>Home component</h1>} />
-            <Route path="/moves" render={() => <h1>Moves component</h1>} />
+            <Route path="/moves" component={Moves} />
             <Route
               path="/favorite"
               render={() => <h1>Favorite component</h1>}
