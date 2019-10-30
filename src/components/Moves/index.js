@@ -4,7 +4,7 @@ import MoveCard from "./MoveCard.js";
 import { Row, Col } from "react-bootstrap";
 import "./moves.css";
 
-class index extends Component {
+class Moves extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,4 +65,4 @@ class index extends Component {
   }
 }
 
-export default index;
+export default Moves;
