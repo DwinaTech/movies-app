@@ -1,0 +1,10 @@
+.create-film {
+    text-align: right;
+}
+
+@media(max-width: 569px){
+    .create-film button{
+        text-align: center;
+        width: 100%;
+    }
+}
