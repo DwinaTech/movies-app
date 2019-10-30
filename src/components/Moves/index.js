@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import data from "../../data/moves.json";
 import MoveCard from "./MoveCard.js";
 import { Row, Col } from "react-bootstrap";
+import { updateFavorite } from "../../helper";
 import "./moves.css";
 
 class Moves extends Component {
@@ -16,21 +17,7 @@ class Moves extends Component {
   handleFavorite = (e, moveTitle) => {
     e.preventDefault();
     const { moves, actors } = this.state;
-
-    const updatedMoves = actors.map(actor => {
-      return {
-        [actor]: moves[actor].map(move => {
-          if (move["Film"] === moveTitle) {
-            return {
-              ...move,
-              isFavorite: true
-            };
-          }
-          return move;
-        })
-      }
-    });
-
+    const updatedMoves = updateFavorite({ moveTitle, moves, actors })
     this.setState({ moves: updatedMoves[0] });
   };
 

@@ -20,11 +20,26 @@ const findMonth = monthInString => {
     return formatedMonth;
 }
 
-const formatDate = date => {
+export const formatDate = date => {
     const originalDate = date.split(" ");
     const month = findMonth(originalDate[1]);
     const formatedDate = `${originalDate[2]}-${month}-${originalDate[0]}`
     return formatedDate;
 };
 
-export default formatDate;
+export const updateFavorite = ({moveTitle, moves, actors}) => {
+    return actors.map(actor => {
+      return {
+        [actor]: moves[actor].map(move => {
+          if (move["Film"] === moveTitle) {
+            return {
+              ...move,
+              isFavorite: true
+            };
+          }
+          return move;
+        })
+      }
+    });
+  };
+
