@@ -31,10 +31,16 @@ export const updateFavorite = ({moveTitle, moves, actors}) => {
     return actors.map(actor => {
       return {
         [actor]: moves[actor].map(move => {
-          if (move["Film"] === moveTitle) {
+          if (move["Film"] === moveTitle && !move.isFavorite) {
             return {
               ...move,
               isFavorite: true
+            };
+          }
+          if (move["Film"] === moveTitle && move.isFavorite) {
+            return {
+              ...move,
+              isFavorite: false
             };
           }
           return move;
