@@ -13,7 +13,7 @@ const months = [
   { December: "12" }
 ];
 
-const findMonth = monthInString => {
+const convertMonthToNumber = monthInString => {
   const result = months.find(month => month[monthInString]);
   const keys = Object.keys(result || {});
   const formatedMonth = result[keys[0]];
@@ -22,14 +22,14 @@ const findMonth = monthInString => {
 
 export const formatDate = date => {
   const originalDate = date.split(" ");
-  const month = findMonth(originalDate[1]);
+  const month = convertMonthToNumber(originalDate[1]);
   const formatedDate = `${originalDate[2]}-${month}-${originalDate[0]}`;
   return formatedDate;
 };
 
-export const updateFavorite = (moveTitle, currentActor) => {
+export const markMoveAsFavorite = (moveTitle, currentActor) => {
   let movesDate = {};
-  const moves = getFilmsData();
+  const moves = getMovesData();
   for (let actor in moves) {
     if (actor === currentActor) {
       const films = moves[actor].map(actor => {
@@ -55,21 +55,21 @@ export const updateFavorite = (moveTitle, currentActor) => {
   return movesDate;
 };
 
-export const storeFilmsData = data => {
+export const storeMovesData = data => {
   return Promise.resolve(
-    localStorage.setItem("getFilmsData", JSON.stringify(data))
+    localStorage.setItem("getMovesData", JSON.stringify(data))
   );
 };
 
-export const getFilmsData = () => {
-  const films = localStorage.getItem("getFilmsData");
+export const getMovesData = () => {
+  const films = localStorage.getItem("getMovesData");
   const moves = films ? JSON.parse(films) : {};
   return moves;
 };
 
-export const addDateToFilms = () => {
+export const addFormatedDate = () => {
   let movesDate = {};
-  const moves = getFilmsData();
+  const moves = getMovesData();
   for (let move in moves) {
     const films = moves[move].map(move => {
       return {
@@ -83,12 +83,12 @@ export const addDateToFilms = () => {
 };
 
 export const getActorsData = () => {
-  return Object.keys(getFilmsData() || {});
+  return Object.keys(getMovesData() || {});
 };
 
-export const getFavoriteFilms = () => {
+export const getFavoriteMoves = () => {
     let movesDate = {};
-    const moves = getFilmsData();
+    const moves = getMovesData();
     for (let move in moves) {
       const films = moves[move].filter(move => move.isFavorite);
       movesDate = { ...movesDate, [move]: films };

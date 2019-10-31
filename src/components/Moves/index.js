@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import MoveCard from "./MoveCard.js";
 import { Row, Col } from "react-bootstrap";
 import {
-  updateFavorite,
-  storeFilmsData,
-  addDateToFilms,
+  markMoveAsFavorite,
+  storeMovesData,
+  addFormatedDate,
   getActorsData
-} from "../../helper";
+} from "../../helpers";
 import "./moves.css";
 
 class Moves extends Component {
@@ -20,19 +20,19 @@ class Moves extends Component {
 
   componentDidMount() {
     const actors = getActorsData();
-    const updateDateFormat = addDateToFilms();
+    const movesData = addFormatedDate();
 
     this.setState({
-      moves: updateDateFormat,
+      moves: movesData,
       actors
     });
   }
 
   handleFavorite = (e, moveTitle, actor) => {
     e.preventDefault();
-    const updatedMoves = updateFavorite(moveTitle, actor);
-    storeFilmsData(updatedMoves).then(() => {
-      this.setState({ moves: updatedMoves });
+    const updatedMoves = markMoveAsFavorite(moveTitle, actor);
+    storeMovesData(updatedMoves).then(() => {
+      window.location.reload();
     });
   };
 

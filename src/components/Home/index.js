@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import MoveCard from "../Moves/MoveCard";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import {
-  updateFavorite,
-  storeFilmsData,
-  addDateToFilms,
+  markMoveAsFavorite,
+  storeMovesData,
+  addFormatedDate,
   getActorsData
-} from "../../helper";
+} from "../../helpers";
 import "./home.css";
 
 class Home extends Component {
@@ -22,20 +22,16 @@ class Home extends Component {
 
   componentDidMount() {
     const actors = getActorsData();
-    const updateDateFormat = addDateToFilms();
+    const movesData = addFormatedDate();
 
     this.setState({
-      moves: updateDateFormat,
+      moves: movesData,
       actors
     });
   }
 
   filterMoves = moves => {
     const { from, to } = this.state;
-    console.log("from =====", from);
-    console.log("to =====", to);
-    console.log("moves =====", moves);
-
     if (from && to) {
       return moves.filter(
         move =>
@@ -48,8 +44,8 @@ class Home extends Component {
 
   handleFavorite = (e, moveTitle, actor) => {
     e.preventDefault();
-    const updatedMoves = updateFavorite(moveTitle, actor);
-    storeFilmsData(updatedMoves).then(() => {
+    const updatedMoves = markMoveAsFavorite(moveTitle, actor);
+    storeMovesData(updatedMoves).then(() => {
       window.location.reload();
     });
   };
@@ -60,19 +56,19 @@ class Home extends Component {
     return (
       actors.length &&
       actors.map(actor => {
-        return this.filterMoves(moves[actor]).map(moveContent => {
+        return this.filterMoves(moves[actor]).map(move => {
           const newProps = {
-            title: moveContent["Film"],
-            image: moveContent.ImageURL,
-            actor: moveContent["Bond Actor"],
-            isFavorite: moveContent.isFavorite,
-            release: moveContent["UK release date"]
+            title: move["Film"],
+            image: move.ImageURL,
+            actor: move["Bond Actor"],
+            isFavorite: move.isFavorite,
+            release: move["UK release date"]
           };
           return (
-            <Col key={moveContent["Film"]} xs={12} sm={12} md={4}>
+            <Col key={move["Film"]} xs={12} sm={12} md={4}>
               <MoveCard
                 onClick={e =>
-                  this.handleFavorite(e, moveContent["Film"], actor)
+                  this.handleFavorite(e, move["Film"], actor)
                 }
                 {...newProps}
               />

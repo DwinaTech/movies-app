@@ -4,15 +4,15 @@ import Home from "./components/Home";
 import Moves from "./components/Moves";
 import data from "./data/moves.json";
 import Favorites from "./components/Favorites.js";
-import { storeFilmsData, getFilmsData } from "./helper";
+import { storeMovesData, getMovesData } from "./helpers";
 import { Container, Row, Col } from "react-bootstrap";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./routes.css";
 
 function Routes() {
-  const filmsData = Object.keys(getFilmsData() || {});
+  const filmsData = Object.keys(getMovesData() || {});
   if (!filmsData || !filmsData.length) {    
-    storeFilmsData(data);
+    storeMovesData(data);
   }
   
   return (
