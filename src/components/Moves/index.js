@@ -69,7 +69,7 @@ class Moves extends Component {
               };
               const cardProps = {
                 ...newProps,
-                onShowModal: e =>
+                onShowModal: () =>
                   this.onShowModal({ ...newProps, ...modalProps }),
                 isFavorite: move.isFavorite,
                 onClick: e => this.handleFavorite(e, move["Film"], actor)

@@ -6,13 +6,15 @@ import {
   markMoveAsFavorite,
   storeMovesData
 } from "../../helpers";
+import MoveModal from "../Moves/moveModal";
 
 export class Favorites extends Component {
   constructor(props) {
     super(props);
     this.state = {
       moves: [],
-      actors: []
+      actors: [],
+      moveDate: {}
     };
   }
 
@@ -33,10 +35,19 @@ export class Favorites extends Component {
     });
   };
 
+  onHideModal = () => {
+    this.setState({ showModal: false, moveDate: {} });
+  };
+
+  onShowModal = moveDate => {
+    this.setState({ showModal: true, moveDate });
+  };
+
   render() {
-    const { moves, actors } = this.state;
+    const { moves, actors, showModal, moveDate } = this.state;
     return (
       <Row className="moves">
+        <MoveModal {...moveDate} />
         {actors.map(
           actor =>
             actor &&
@@ -45,15 +56,25 @@ export class Favorites extends Component {
                 title: move["Film"],
                 image: move.ImageURL,
                 actor: move["Bond Actor"],
-                isFavorite: move.isFavorite,
                 release: move["UK release date"]
+              };
+              const modalProps = {
+                ...newProps,
+                show: showModal,
+                onHide: this.onHideModal,
+                description: move["Description"],
+                actor: move["Bond Actor"]
+              };
+              const cardProps = {
+                ...newProps,
+                onShowModal: () =>
+                  this.onShowModal({ ...newProps, ...modalProps }),
+                isFavorite: move.isFavorite,
+                onClick: e => this.handleFavorite(e, move["Film"], actor)
               };
               return (
                 <Col key={move["Film"]} xs={12} sm={12} md={4}>
-                  <MoveCard
-                    onClick={e => this.handleFavorite(e, move["Film"], actor)}
-                    {...newProps}
-                  />
+                  <MoveCard {...cardProps} />
                 </Col>
               );
             })

@@ -8,6 +8,7 @@ import {
   getActorsData
 } from "../../helpers";
 import "./home.css";
+import MoveModal from "../Moves/moveModal";
 
 class Home extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class Home extends Component {
       to: "2000-01-01",
       from: "2019-01-01",
       moves: [],
-      actors: []
+      actors: [],
+      showModal: false
     };
   }
 
@@ -50,7 +52,7 @@ class Home extends Component {
   };
 
   renderMoves = () => {
-    const { actors, moves } = this.state;
+    const { actors, moves, showModal } = this.state;
     return (
       actors.length &&
       actors.map(actor => {
@@ -59,15 +61,24 @@ class Home extends Component {
             title: move["Film"],
             image: move.ImageURL,
             actor: move["Bond Actor"],
-            isFavorite: move.isFavorite,
             release: move["UK release date"]
+          };
+          const modalProps = {
+            ...newProps,
+            show: showModal,
+            onHide: this.onHideModal,
+            description: move["Description"],
+            actor: move["Bond Actor"]
+          };
+          const cardProps = {
+            ...newProps,
+            onShowModal: () => this.onShowModal({ ...newProps, ...modalProps }),
+            isFavorite: move.isFavorite,
+            onClick: e => this.handleFavorite(e, move["Film"], actor)
           };
           return (
             <Col key={move["Film"]} xs={12} sm={12} md={4}>
-              <MoveCard
-                onClick={e => this.handleFavorite(e, move["Film"], actor)}
-                {...newProps}
-              />
+              <MoveCard {...cardProps} />
             </Col>
           );
         });
@@ -79,10 +90,19 @@ class Home extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onHideModal = () => {
+    this.setState({ showModal: false, moveDate: {} });
+  };
+
+  onShowModal = moveDate => {
+    this.setState({ showModal: true, moveDate });
+  };
+
   render() {
-    const { from, to } = this.state;
+    const { from, to, moveDate } = this.state;
     return (
       <React.Fragment>
+        <MoveModal {...moveDate} />
         <Row className="moves">
           <Col xs={12} sm={12} md={8}>
             <Form>
