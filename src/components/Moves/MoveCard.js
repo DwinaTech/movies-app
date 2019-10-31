@@ -12,7 +12,7 @@ const MoveCard = ({ title, actor, release, image, isFavorite, onClick }) => {
         <Card.Text></Card.Text>
       </Card.Body>
       <Card.Footer onClick={onClick}>
-        <i className="fas fa-heart" style={{ color: isFavorite ? 'red' : 'black' }}></i>
+        <i className="fa fa-heart" style={{ color: isFavorite ? 'red' : 'black' }}></i>
         <small className="text-muted">{` Press to ${isFavorite ? 'remove from' : 'add to'} favorite list`}</small>
       </Card.Footer>
     </Card>
