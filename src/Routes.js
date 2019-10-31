@@ -2,11 +2,19 @@ import React from "react";
 import SideBar from "./SideBar";
 import Home from "./components/Home";
 import Moves from "./components/Moves";
+import data from "./data/moves.json";
+import Favorites from "./components/Favorites.js";
+import { storeFilmsData, getFilmsData } from "./helper";
 import { Container, Row, Col } from "react-bootstrap";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./routes.css";
 
 function Routes() {
+  const filmsData = Object.keys(getFilmsData() || {});
+  if (!filmsData || !filmsData.length) {    
+    storeFilmsData(data);
+  }
+  
   return (
     <Router>
       <Container fluid>
@@ -19,7 +27,7 @@ function Routes() {
             <Route path="/moves" component={Moves} />
             <Route
               path="/favorite"
-              render={() => <h1>Favorite component</h1>}
+              component={Favorites}
             />
           </Col>
         </Row>
