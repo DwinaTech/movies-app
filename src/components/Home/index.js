@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-import data from "../../data/moves.json";
 import MoveCard from "../Moves/MoveCard";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { formatDate, updateFavorite } from "../../helper";
+import {
+  updateFavorite,
+  storeFilmsData,
+  addDateToFilms,
+  getActorsData
+} from "../../helper";
 import "./home.css";
 
 class Home extends Component {
@@ -17,22 +21,21 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const updateDateFormat = Object.keys(data).map(actor => ({
-      [actor]: data[actor].map(film => {
-        return {
-          ...film,
-          date: formatDate(film["UK release date"])
-        };
-      })
-    }));
+    const actors = getActorsData();
+    const updateDateFormat = addDateToFilms();
+
     this.setState({
-      moves: updateDateFormat[0],
-      actors: Object.keys(data || {})
+      moves: updateDateFormat,
+      actors
     });
   }
 
   filterMoves = moves => {
     const { from, to } = this.state;
+    console.log("from =====", from);
+    console.log("to =====", to);
+    console.log("moves =====", moves);
+
     if (from && to) {
       return moves.filter(
         move =>
@@ -43,21 +46,21 @@ class Home extends Component {
     return [];
   };
 
-  handleFavorite = (e, moveTitle) => {
+  handleFavorite = (e, moveTitle, actor) => {
     e.preventDefault();
-    const { moves, actors } = this.state;
-    const updatedMoves = updateFavorite({ moveTitle, moves, actors });
-    this.setState({ moves: updatedMoves[0] });
+    const updatedMoves = updateFavorite(moveTitle, actor);
+    storeFilmsData(updatedMoves).then(() => {
+      window.location.reload();
+    });
   };
 
   renderMoves = () => {
     const { actors, moves } = this.state;
 
     return (
-      actors &&
       actors.length &&
-      actors.map(actor =>
-        this.filterMoves(moves[actor]).map(moveContent => {
+      actors.map(actor => {
+        return this.filterMoves(moves[actor]).map(moveContent => {
           const newProps = {
             title: moveContent["Film"],
             image: moveContent.ImageURL,
@@ -68,13 +71,15 @@ class Home extends Component {
           return (
             <Col key={moveContent["Film"]} xs={12} sm={12} md={4}>
               <MoveCard
-                onClick={e => this.handleFavorite(e, moveContent["Film"])}
+                onClick={e =>
+                  this.handleFavorite(e, moveContent["Film"], actor)
+                }
                 {...newProps}
               />
             </Col>
           );
-        })
-      )
+        });
+      })
     );
   };
 
