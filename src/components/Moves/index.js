@@ -23,7 +23,6 @@ class Moves extends Component {
   componentDidMount() {
     const actors = getActorsData();
     const movesData = addFormatedDate();
-
     this.setState({
       moves: movesData,
       actors

@@ -23,7 +23,6 @@ class Home extends Component {
   componentDidMount() {
     const actors = getActorsData();
     const movesData = addFormatedDate();
-
     this.setState({
       moves: movesData,
       actors
@@ -52,7 +51,6 @@ class Home extends Component {
 
   renderMoves = () => {
     const { actors, moves } = this.state;
-
     return (
       actors.length &&
       actors.map(actor => {
@@ -67,9 +65,7 @@ class Home extends Component {
           return (
             <Col key={move["Film"]} xs={12} sm={12} md={4}>
               <MoveCard
-                onClick={e =>
-                  this.handleFavorite(e, move["Film"], actor)
-                }
+                onClick={e => this.handleFavorite(e, move["Film"], actor)}
                 {...newProps}
               />
             </Col>

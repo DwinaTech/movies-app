@@ -19,7 +19,6 @@ export class Favorites extends Component {
   componentDidMount() {
     const movesDate = getFavoriteMoves();
     const actors = Object.keys(movesDate || {});
-
     this.setState({
       moves: movesDate,
       actors
@@ -52,9 +51,7 @@ export class Favorites extends Component {
               return (
                 <Col key={move["Film"]} xs={12} sm={12} md={4}>
                   <MoveCard
-                    onClick={e =>
-                      this.handleFavorite(e, move["Film"], actor)
-                    }
+                    onClick={e => this.handleFavorite(e, move["Film"], actor)}
                     {...newProps}
                   />
                 </Col>
