@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Routes from './Routes';
