@@ -11,7 +11,7 @@ const SideBar = () => {
   }, [pathname]);
 
   return (
-    <Nav variant="pills" className="flex-column" defaultActiveKey={activeKey}>
+    <Nav variant="pills" className="flex-column side-bar" defaultActiveKey={activeKey}>
       <Nav.Item>
         <Nav.Link disabled>Moves:</Nav.Link>
       </Nav.Item>

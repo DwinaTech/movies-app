@@ -1,34 +1,21 @@
-.side-bar {
+.side-bar-container {
   background-color: #9c9c9c;
   padding: 0;
   margin: 0;
   text-align: center;
-  overflow: hidden;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  min-height: 100vh;
 }
 
-.side-bar .nav-link.active {
+.side-bar-container .nav-link.active {
   border-radius: 0;
 }
 
-.side-bar .nav-link.disabled {
+.side-bar-container .nav-link.disabled {
   color: #0f58aa;
   font-size: 20px;
   font-weight: bold;
 }
 
-.side-bar .nav-link {
+.side-bar-container .nav-link {
   font-weight: bold;
-}
-
-.main-contents {
-  position: fixed;
-  right: 0;
-  overflow-y: auto;
-  height: 100%;
-  overflow-x: hidden;
 }

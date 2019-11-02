@@ -1,5 +1,5 @@
 import React from "react";
-import SideBar from "./SideBar";
+import SideBar from "./components/SideBar";
 import Home from "./components/Home";
 import Moves from "./components/Moves";
 import data from "./data/moves.json";
@@ -18,12 +18,12 @@ function Routes() {
 
   return (
     <Router>
-      <Container fluid>
+      <Container>
         <Row>
-          <Col className="side-bar" xs={3} md={2} lg={1}>
+          <Col className="side-bar-container" xs={3} md={2}>
             <SideBar />
           </Col>
-          <Col className="main-contents" xs={9} md={10} lg={11}>
+          <Col className="main-contents" xs={9} md={10}>
             <Route exact path="/" component={Home} />
             <Route path="/moves" component={Moves} />
             <Route path="/favorite" component={Favorites} />
