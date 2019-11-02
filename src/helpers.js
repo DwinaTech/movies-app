@@ -21,6 +21,10 @@ const convertMonthToNumber = monthInString => {
 };
 
 export const formatDate = date => {
+  if (date && date.length === 10) {
+    return date;
+  }
+
   const originalDate = date.split(" ");
   const month = convertMonthToNumber(originalDate[1]);
   const formatedDate = `${originalDate[2]}-${month}-${originalDate[0]}`;
@@ -55,9 +59,23 @@ export const markMoveAsFavorite = (moveTitle, currentActor) => {
   return movesDate;
 };
 
+export const addId = data => {
+  let movesDate = {};
+  for (let moveType in data) {
+    const films = data[moveType].map((moveContents, index) => {
+      return {
+        id: index,
+        ...moveContents
+      };
+    });
+    movesDate = { ...movesDate, [moveType]: films };
+  }
+  return movesDate;
+};
+
 export const storeMovesData = data => {
   return Promise.resolve(
-    localStorage.setItem("getMovesData", JSON.stringify(data))
+    localStorage.setItem("getMovesData", JSON.stringify(addId(data)))
   );
 };
 
@@ -67,14 +85,24 @@ export const getMovesData = () => {
   return moves;
 };
 
+export const updateMovesData = (newData, moveType) => {
+  const currentData = getMovesData();
+  currentData[moveType] = [
+    ...currentData[moveType],
+    { id: currentData[moveType].length, ...newData }
+  ];
+  storeMovesData(currentData);
+};
+
 export const addFormatedDate = () => {
   let movesDate = {};
   const moves = getMovesData();
   for (let move in moves) {
-    const films = moves[move].map(move => {
+    const films = moves[move].map((moveContents, index) => {
       return {
-        ...move,
-        date: formatDate(move["UK release date"])
+        id: index,
+        ...moveContents,
+        date: formatDate(moveContents["UK release date"])
       };
     });
     movesDate = { ...movesDate, [move]: films };
@@ -87,11 +115,11 @@ export const getActorsData = () => {
 };
 
 export const getFavoriteMoves = () => {
-    let movesDate = {};
-    const moves = getMovesData();
-    for (let move in moves) {
-      const films = moves[move].filter(move => move.isFavorite);
-      movesDate = { ...movesDate, [move]: films };
-    }
-    return movesDate;
-  };
+  let movesDate = {};
+  const moves = getMovesData();
+  for (let move in moves) {
+    const films = moves[move].filter(moveContent => moveContent.isFavorite);
+    movesDate = { ...movesDate, [move]: films };
+  }
+  return movesDate;
+};
