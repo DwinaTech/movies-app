@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { updateMovesData } from "../../helpers";
 import AlertComponent from "./AlertComponent";
+import './index.css';
 
 export class AddMove extends Component {
   state = {
@@ -84,7 +85,7 @@ export class AddMove extends Component {
       description
     } = this.state;
     return (
-      <Row>
+      <Row className="add-move">
         <Col xs={12} md={{ span: 8, offset: 2 }}>
           {showAlert && (
             <AlertComponent
