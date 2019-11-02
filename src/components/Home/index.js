@@ -77,7 +77,7 @@ class Home extends Component {
             onClick: e => this.handleFavorite(e, move["Film"], actor)
           };
           return (
-            <Col key={move["Film"]} xs={12} sm={12} md={4}>
+            <Col key={move.id} xs={12} sm={12} md={4}>
               <MoveCard {...cardProps} />
             </Col>
           );
@@ -135,7 +135,7 @@ class Home extends Component {
             </Form>
           </Col>
           <Col xs={12} md={4} className="create-film">
-            <Button>Create</Button>
+            <Button as="a" href="/add-move">Create</Button>
           </Col>
         </Row>
         <Row className="moves">{this.renderMoves()}</Row>
