@@ -3,18 +3,19 @@ import SideBar from "./SideBar";
 import Home from "./components/Home";
 import Moves from "./components/Moves";
 import data from "./data/moves.json";
+import AddMove from "./components/AddMove.js";
 import Favorites from "./components/Favorites.js";
-import { storeMovesData, getMovesData } from "./helpers";
 import { Container, Row, Col } from "react-bootstrap";
+import { storeMovesData, getMovesData } from "./helpers";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./routes.css";
 
 function Routes() {
   const filmsData = Object.keys(getMovesData() || {});
-  if (!filmsData || !filmsData.length) {    
+  if (!filmsData || !filmsData.length) {
     storeMovesData(data);
   }
-  
+
   return (
     <Router>
       <Container fluid>
@@ -25,10 +26,8 @@ function Routes() {
           <Col className="main-contents" xs={9} md={10} lg={11}>
             <Route exact path="/" component={Home} />
             <Route path="/moves" component={Moves} />
-            <Route
-              path="/favorite"
-              component={Favorites}
-            />
+            <Route path="/favorite" component={Favorites} />
+            <Route path="/add-move" component={AddMove} />
           </Col>
         </Row>
       </Container>
