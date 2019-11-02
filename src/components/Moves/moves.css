@@ -1,13 +1,13 @@
 .moves {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.moves .card{
-    margin-bottom: 20px;
-    width: 100% !important;
+.moves .card {
+  margin-bottom: 20px;
+  width: 100% !important;
 }
 
-.modal-header img{
-    width: 100%;;
+.modal-header img {
+  width: 100%;
 }
