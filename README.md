@@ -45,3 +45,6 @@
 - Git & Github
 - React Bootstrap
 - LocalStore as fake DB
+
+### Note:
+- The App tested only at chrome
