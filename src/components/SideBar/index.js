@@ -11,7 +11,11 @@ const SideBar = () => {
   }, [pathname]);
 
   return (
-    <Nav variant="pills" className="flex-column side-bar" defaultActiveKey={activeKey}>
+    <Nav
+      variant="pills"
+      className="flex-column side-bar"
+      defaultActiveKey={activeKey}
+    >
       <Nav.Item>
         <Nav.Link disabled>Moves:</Nav.Link>
       </Nav.Item>
@@ -28,6 +32,11 @@ const SideBar = () => {
       <Nav.Item>
         <Nav.Link eventKey="/favorite" as={Link} to="/favorite">
           Favorite
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="/add-move" as={Link} to="/add-move">
+          Add Film
         </Nav.Link>
       </Nav.Item>
     </Nav>
