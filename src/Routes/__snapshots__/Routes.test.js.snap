@@ -1,0 +1,458 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="side-bar-container col-md-2 col-3"
+    >
+      <div
+        className="flex-column side-bar nav nav-pills"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="nav-item"
+        >
+          <a
+            aria-disabled={true}
+            className="nav-link disabled"
+            data-rb-event-key={null}
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            Moves:
+          </a>
+        </div>
+        <div
+          className="nav-item"
+        >
+          <a
+            className="nav-link active"
+            data-rb-event-key="/"
+            disabled={false}
+            href="/"
+            onClick={[Function]}
+          >
+            Home
+          </a>
+        </div>
+        <div
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            data-rb-event-key="/moves"
+            disabled={false}
+            href="/moves"
+            onClick={[Function]}
+          >
+            Moves
+          </a>
+        </div>
+        <div
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            data-rb-event-key="/favorite"
+            disabled={false}
+            href="/favorite"
+            onClick={[Function]}
+          >
+            Favorite
+          </a>
+        </div>
+        <div
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            data-rb-event-key="/add-move"
+            disabled={false}
+            href="/add-move"
+            onClick={[Function]}
+          >
+            Add Film
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="main-contents col-md-10 col-9"
+    >
+      <div
+        className="moves row"
+      >
+        <div
+          className="col-md-8 col-sm-12 col-12"
+        >
+          <form
+            className=""
+          >
+            <div
+              className="form-group row"
+            >
+              <label
+                className="form-label col-form-label col-sm-1"
+                htmlFor="formHorizontalEmail"
+              >
+                Form
+              </label>
+              <div
+                className="col-sm-5"
+              >
+                <input
+                  className="form-control"
+                  id="formHorizontalEmail"
+                  name="from"
+                  onChange={[Function]}
+                  placeholder="Date"
+                  type="date"
+                  value="2019-01-01"
+                />
+              </div>
+              <label
+                className="form-label col-form-label col-sm-1"
+                htmlFor="formHorizontalEmail"
+              >
+                To
+              </label>
+              <div
+                className="col-sm-5"
+              >
+                <input
+                  className="form-control"
+                  id="formHorizontalEmail"
+                  name="to"
+                  onChange={[Function]}
+                  placeholder="Date"
+                  type="date"
+                  value="2000-01-01"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div
+          className="create-film col-md-4 col-12"
+        >
+          <a
+            className="btn btn-primary"
+            href="/add-move"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            Create
+          </a>
+        </div>
+      </div>
+      <div
+        className="moves row"
+      >
+        <div
+          className="col-md-4 col-sm-12 col-12"
+        >
+          <div
+            className="card"
+            style={
+              Object {
+                "width": "18rem",
+              }
+            }
+          >
+            <img
+              alt="Die Another Day"
+              className="card-img-top"
+              onClick={[Function]}
+              src="https://cdn.pocket-lint.com/r/s/660x/assets/images/148096-tv-feature-bond-gallery-image21-saq5axcp9j.jpg?v1"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Die Another Day
+              </div>
+              <p
+                className="card-text"
+              >
+                20 November 2002
+              </p>
+              <p
+                className="card-text"
+              >
+                Pierce Brosnan
+              </p>
+              <p
+                className="card-text"
+              />
+            </div>
+            <div
+              className="card-footer"
+              onClick={[Function]}
+            >
+              <i
+                className="fa fa-heart"
+                style={
+                  Object {
+                    "color": "black",
+                  }
+                }
+              />
+              <small
+                className="text-muted"
+              >
+                 Press to add to favorite list
+              </small>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-4 col-sm-12 col-12"
+        >
+          <div
+            className="card"
+            style={
+              Object {
+                "width": "18rem",
+              }
+            }
+          >
+            <img
+              alt="Casino Royale"
+              className="card-img-top"
+              onClick={[Function]}
+              src="https://cdn.pocket-lint.com/r/s/660x/assets/images/148096-tv-feature-bond-gallery-image22-jnqmh3jklf.jpg?v1"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Casino Royale
+              </div>
+              <p
+                className="card-text"
+              >
+                16 November 2006
+              </p>
+              <p
+                className="card-text"
+              >
+                Daniel Craig
+              </p>
+              <p
+                className="card-text"
+              />
+            </div>
+            <div
+              className="card-footer"
+              onClick={[Function]}
+            >
+              <i
+                className="fa fa-heart"
+                style={
+                  Object {
+                    "color": "black",
+                  }
+                }
+              />
+              <small
+                className="text-muted"
+              >
+                 Press to add to favorite list
+              </small>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-4 col-sm-12 col-12"
+        >
+          <div
+            className="card"
+            style={
+              Object {
+                "width": "18rem",
+              }
+            }
+          >
+            <img
+              alt="Quantum of Solace"
+              className="card-img-top"
+              onClick={[Function]}
+              src="https://cdn.pocket-lint.com/r/s/660x/assets/images/148096-tv-feature-bond-gallery-image23-074kml2fqy.jpg?v1"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Quantum of Solace
+              </div>
+              <p
+                className="card-text"
+              >
+                31 October 2008
+              </p>
+              <p
+                className="card-text"
+              >
+                Daniel Craig
+              </p>
+              <p
+                className="card-text"
+              />
+            </div>
+            <div
+              className="card-footer"
+              onClick={[Function]}
+            >
+              <i
+                className="fa fa-heart"
+                style={
+                  Object {
+                    "color": "black",
+                  }
+                }
+              />
+              <small
+                className="text-muted"
+              >
+                 Press to add to favorite list
+              </small>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-4 col-sm-12 col-12"
+        >
+          <div
+            className="card"
+            style={
+              Object {
+                "width": "18rem",
+              }
+            }
+          >
+            <img
+              alt="Skyfall"
+              className="card-img-top"
+              onClick={[Function]}
+              src="https://cdn.pocket-lint.com/r/s/660x/assets/images/148096-tv-feature-bond-gallery-image24-avqr79slhy.jpg?v1"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Skyfall
+              </div>
+              <p
+                className="card-text"
+              >
+                26 October 2012
+              </p>
+              <p
+                className="card-text"
+              >
+                Daniel Craig
+              </p>
+              <p
+                className="card-text"
+              />
+            </div>
+            <div
+              className="card-footer"
+              onClick={[Function]}
+            >
+              <i
+                className="fa fa-heart"
+                style={
+                  Object {
+                    "color": "black",
+                  }
+                }
+              />
+              <small
+                className="text-muted"
+              >
+                 Press to add to favorite list
+              </small>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-4 col-sm-12 col-12"
+        >
+          <div
+            className="card"
+            style={
+              Object {
+                "width": "18rem",
+              }
+            }
+          >
+            <img
+              alt="Spectre"
+              className="card-img-top"
+              onClick={[Function]}
+              src="https://cdn.pocket-lint.com/r/s/660x/assets/images/148096-tv-feature-bond-gallery-image25-qoue1ji6vz.jpg?v1"
+            />
+            <div
+              className="card-body"
+            >
+              <div
+                className="card-title h5"
+              >
+                Spectre
+              </div>
+              <p
+                className="card-text"
+              >
+                26 October 2015
+              </p>
+              <p
+                className="card-text"
+              >
+                Daniel Craig
+              </p>
+              <p
+                className="card-text"
+              />
+            </div>
+            <div
+              className="card-footer"
+              onClick={[Function]}
+            >
+              <i
+                className="fa fa-heart"
+                style={
+                  Object {
+                    "color": "black",
+                  }
+                }
+              />
+              <small
+                className="text-muted"
+              >
+                 Press to add to favorite list
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

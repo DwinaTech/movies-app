@@ -1,12 +1,12 @@
 import React from "react";
-import SideBar from "./components/SideBar";
-import Home from "./components/Home";
-import Moves from "./components/Moves";
-import data from "./data/moves.json";
-import AddMove from "./components/AddMove.js";
-import Favorites from "./components/Favorites.js";
+import SideBar from "../components/SideBar";
+import Home from "../components/Home";
+import Moves from "../components/Moves";
+import data from "../data/moves.json";
+import AddMove from "../components/AddMove.js/index.js";
+import Favorites from "../components/Favorites.js/index.js";
 import { Container, Row, Col } from "react-bootstrap";
-import { storeMovesData, getMovesData } from "./helpers";
+import { storeMovesData, getMovesData } from "../helpers";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./routes.css";
 
