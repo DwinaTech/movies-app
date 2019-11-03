@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { updateMovesData } from "../../helpers";
+import { updateMovesData, getMovesData } from "../../helpers";
 import AlertComponent from "./AlertComponent";
-import './index.css';
+import "./index.css";
 
 export class AddMove extends Component {
   state = {
@@ -34,14 +34,14 @@ export class AddMove extends Component {
       });
       return;
     }
-    if (!image.includes('http://') && !image.includes('https://')) {
-        this.setState({
-            alertMessage: "You have to inter valid URL!",
-            alertHeading: "Error:",
-            alertType: "danger",
-            showAlert: true
-          });
-          return;
+    if (!image.includes("http://") && !image.includes("https://")) {
+      this.setState({
+        alertMessage: "You have to inter valid URL!",
+        alertHeading: "Error:",
+        alertType: "danger",
+        showAlert: true
+      });
+      return;
     }
     const filmData = {
       Film: title,
@@ -51,15 +51,32 @@ export class AddMove extends Component {
       Description: description,
       "Box Office(Millions)": boxOffice
     };
-
+    const currentData = getMovesData();
+    const isMoveExist = currentData["Bond Films"] && currentData["Bond Films"].filter(film => {
+      if (
+        film.Film === filmData.Film &&
+        film["Bond Actor"] === filmData["Bond Actor"] &&
+        film["UK release date"] === filmData["UK release date"] &&
+        film.ImageURL === filmData.ImageURL &&
+        film.Description === filmData.Description &&
+        film["Box Office(Millions)"] === filmData["Box Office(Millions)"]
+      ) {
+        return true;
+      }
+      return false;
+    });
+    // Do not add new film data if already exist
+    if (isMoveExist && isMoveExist.length) {
+      this.setState({
+        alertMessage: "This film already exist!",
+        alertHeading: "Error:",
+        alertType: "danger",
+        showAlert: true
+      });
+      return;
+    }
     updateMovesData(filmData, "Bond Films");
     this.setState({
-      title: "",
-      actor: "",
-      release: null,
-      image: "",
-      boxOffice: "",
-      description: "",
       alertMessage: "The film added successfully!",
       alertHeading: "Success:",
       alertType: "success",
