@@ -47,4 +47,4 @@
 - LocalStore as fake DB
 
 ### Note:
-- The App tested only at chrome
+- The App tested only at chrome browser
