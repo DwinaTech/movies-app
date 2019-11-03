@@ -1,5 +1,7 @@
 ## Move Application:
 
+### Quick view
+- To visualize the App in quick way you can visit it live on `heroku` by press this link: https://guarded-refuge-70090.herokuapp.com/
 ### How to use the App locally :-
 
 - Clone the repository locally `git clone git@github.com:DwinaTech/moves-app.git`
@@ -10,9 +12,9 @@
 
 - Run `npm start` to launch it on development mode
 
-- Run `npm test` to launch the UNIT test
-
 - Will be running on `http://localhost:3000`
+
+- Run `npm test` to launch the UNIT test
 
 ### App features:
 
