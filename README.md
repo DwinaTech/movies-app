@@ -2,9 +2,9 @@
 
 ### How to use the App locally :-
 
--Clone the repository
+- Clone the repository locally `git clone git@github.com:DwinaTech/moves-app.git`
 
-- Navigate to main directory
+- Navigate to main directory `cd moves-app`
 
 - Run `npm install` to install node modules
 
@@ -14,7 +14,7 @@
 
 - Will be running on `http://localhost:3000`
 
-### App feature:
+### App features:
 
 - Home Page:
     - Add new film by press `Create` button
@@ -34,4 +34,12 @@
     - Display all moves are selected as favorite
     - View full details of a move by duple press a move card `image`
     - Remove a move from favorite list by press a move card `footer`
-    
+
+### The used technologies:
+- CSS
+- React.js
+- JavaScript
+- Font-awesome
+- Git & Github
+- React Bootstrap
+- LocalStore as fake DB
