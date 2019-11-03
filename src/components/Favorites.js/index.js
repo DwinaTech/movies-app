@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import {
   getFavoriteMoves,
   markMoveAsFavorite,
-  storeMovesData
+  storeMovesData,
 } from "../../helpers";
 import MoveModal from "../Moves/moveModal";
 
@@ -27,11 +27,11 @@ export class Favorites extends Component {
     });
   }
 
-  handleFavorite = (e, moveTitle, actor) => {
-    e.preventDefault();
-    const updatedMoves = markMoveAsFavorite(moveTitle, actor);
+  handleFavorite = ({ event, actor, id }) => {
+    event.preventDefault();
+    const updatedMoves = markMoveAsFavorite({ actor, id });
     storeMovesData(updatedMoves).then(() => {
-      window.location.reload();
+      this.setState({ moves: getFavoriteMoves() });
     });
   };
 
@@ -70,7 +70,12 @@ export class Favorites extends Component {
                 onShowModal: () =>
                   this.onShowModal({ ...newProps, ...modalProps }),
                 isFavorite: move.isFavorite,
-                onClick: e => this.handleFavorite(e, move["Film"], actor)
+                onClick: event =>
+                  this.handleFavorite({
+                    event,
+                    actor,
+                    id: move.id
+                  })
               };
               return (
                 <Col key={move.id} xs={12} sm={12} md={4}>

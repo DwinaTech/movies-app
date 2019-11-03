@@ -43,11 +43,11 @@ class Home extends Component {
     return [];
   };
 
-  handleFavorite = (e, moveTitle, actor) => {
-    e.preventDefault();
-    const updatedMoves = markMoveAsFavorite(moveTitle, actor);
+  handleFavorite = ({ event, actor, id }) => {
+    event.preventDefault();
+    const updatedMoves = markMoveAsFavorite({ actor, id });
     storeMovesData(updatedMoves).then(() => {
-      window.location.reload();
+      this.setState({ moves: addFormatedDate() });
     });
   };
 
@@ -74,7 +74,12 @@ class Home extends Component {
             ...newProps,
             onShowModal: () => this.onShowModal({ ...newProps, ...modalProps }),
             isFavorite: move.isFavorite,
-            onClick: e => this.handleFavorite(e, move["Film"], actor)
+            onClick: event =>
+              this.handleFavorite({
+                event,
+                actor,
+                id: move.id
+              })
           };
           return (
             <Col key={move.id} xs={12} sm={12} md={4}>
@@ -135,7 +140,9 @@ class Home extends Component {
             </Form>
           </Col>
           <Col xs={12} md={4} className="create-film">
-            <Button as="a" href="/add-move">Create</Button>
+            <Button as="a" href="/add-move">
+              Create
+            </Button>
           </Col>
         </Row>
         <Row className="moves">{this.renderMoves()}</Row>

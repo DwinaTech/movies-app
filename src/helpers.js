@@ -31,19 +31,19 @@ export const formatDate = date => {
   return formatedDate;
 };
 
-export const markMoveAsFavorite = (moveTitle, currentActor) => {
+export const markMoveAsFavorite = ({ actor, id}) => {
   let movesDate = {};
   const moves = getMovesData();
-  for (let actor in moves) {
-    if (actor === currentActor) {
-      const films = moves[actor].map(actor => {
-        if (actor["Film"] === moveTitle && !actor.isFavorite) {
+  for (let moveType in moves) {
+    if (moveType === actor) {
+      const films = moves[moveType].map(actor => {
+        if (actor.id === id && !actor.isFavorite) {
           return {
             ...actor,
             isFavorite: true
           };
         }
-        if (actor["Film"] === moveTitle && actor.isFavorite) {
+        if (actor.id === id && actor.isFavorite) {
           return {
             ...actor,
             isFavorite: false
@@ -51,9 +51,9 @@ export const markMoveAsFavorite = (moveTitle, currentActor) => {
         }
         return actor;
       });
-      movesDate = { ...movesDate, [actor]: films };
+      movesDate = { ...movesDate, [moveType]: films };
     } else {
-      movesDate = { ...movesDate, [actor]: moves[actor] };
+      movesDate = { ...movesDate, [moveType]: moves[moveType] };
     }
   }
   return movesDate;
