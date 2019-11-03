@@ -21,10 +21,10 @@ const convertMonthToNumber = monthInString => {
 };
 
 export const formatDate = date => {
-  if (date && date.length === 10) {
+  // If the date already in correct format return it
+  if ((date && date.length === 10) || date.includes('-')) {
     return date;
   }
-
   const originalDate = date.split(" ");
   const month = convertMonthToNumber(originalDate[1]);
   const formatedDate = `${originalDate[2]}-${month}-${originalDate[0]}`;
