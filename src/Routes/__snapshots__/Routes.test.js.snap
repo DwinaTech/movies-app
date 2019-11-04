@@ -27,7 +27,7 @@ exports[`renders without crashing 1`] = `
             role="button"
             tabIndex={-1}
           >
-            Moves:
+            movies:
           </a>
         </div>
         <div
@@ -48,12 +48,12 @@ exports[`renders without crashing 1`] = `
         >
           <a
             className="nav-link"
-            data-rb-event-key="/moves"
+            data-rb-event-key="/movies"
             disabled={false}
-            href="/moves"
+            href="/movies"
             onClick={[Function]}
           >
-            Moves
+            movies
           </a>
         </div>
         <div
@@ -61,12 +61,12 @@ exports[`renders without crashing 1`] = `
         >
           <a
             className="nav-link"
-            data-rb-event-key="/favorite"
+            data-rb-event-key="/favourite"
             disabled={false}
-            href="/favorite"
+            href="/favourite"
             onClick={[Function]}
           >
-            Favorite
+            favourite
           </a>
         </div>
         <div
@@ -74,9 +74,9 @@ exports[`renders without crashing 1`] = `
         >
           <a
             className="nav-link"
-            data-rb-event-key="/add-move"
+            data-rb-event-key="/add-movie"
             disabled={false}
-            href="/add-move"
+            href="/add-movie"
             onClick={[Function]}
           >
             Add Film
@@ -88,7 +88,7 @@ exports[`renders without crashing 1`] = `
       className="main-contents col-md-10 col-9"
     >
       <div
-        className="moves row"
+        className="movies row"
       >
         <div
           className="col-md-8 col-sm-12 col-12"
@@ -145,7 +145,7 @@ exports[`renders without crashing 1`] = `
         >
           <a
             className="btn btn-primary"
-            href="/add-move"
+            href="/add-movie"
             onClick={[Function]}
             onKeyDown={[Function]}
           >
@@ -154,7 +154,7 @@ exports[`renders without crashing 1`] = `
         </div>
       </div>
       <div
-        className="moves row"
+        className="movies row"
       >
         <div
           className="col-md-4 col-sm-12 col-12"
@@ -210,7 +210,7 @@ exports[`renders without crashing 1`] = `
               <small
                 className="text-muted"
               >
-                 Press to add to favorite list
+                 Press to add to favourite list
               </small>
             </div>
           </div>
@@ -269,7 +269,7 @@ exports[`renders without crashing 1`] = `
               <small
                 className="text-muted"
               >
-                 Press to add to favorite list
+                 Press to add to favourite list
               </small>
             </div>
           </div>
@@ -328,7 +328,7 @@ exports[`renders without crashing 1`] = `
               <small
                 className="text-muted"
               >
-                 Press to add to favorite list
+                 Press to add to favourite list
               </small>
             </div>
           </div>
@@ -387,7 +387,7 @@ exports[`renders without crashing 1`] = `
               <small
                 className="text-muted"
               >
-                 Press to add to favorite list
+                 Press to add to favourite list
               </small>
             </div>
           </div>
@@ -446,7 +446,7 @@ exports[`renders without crashing 1`] = `
               <small
                 className="text-muted"
               >
-                 Press to add to favorite list
+                 Press to add to favourite list
               </small>
             </div>
           </div>

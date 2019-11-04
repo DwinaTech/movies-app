@@ -1,13 +1,13 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-const MoveCard = props => {
+const MovieCard = props => {
   const {
     title,
     actor,
     release,
     image,
-    isFavorite,
+    isFavourite,
     onClick,
     onShowModal
   } = props;
@@ -23,14 +23,14 @@ const MoveCard = props => {
       <Card.Footer onClick={onClick}>
         <i
           className="fa fa-heart"
-          style={{ color: isFavorite ? "red" : "black" }}
+          style={{ color: isFavourite ? "red" : "black" }}
         ></i>
         <small className="text-muted">{` Press to ${
-          isFavorite ? "remove from" : "add to"
-        } favorite list`}</small>
+          isFavourite ? "removie from" : "add to"
+        } favourite list`}</small>
       </Card.Footer>
     </Card>
   );
 };
 
-export default MoveCard;
+export default MovieCard;

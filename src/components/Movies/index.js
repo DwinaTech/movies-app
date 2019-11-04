@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import MoveCard from "./MoveCard.js";
+import MovieCard from "./MovieCard";
 import { Row, Col, Form } from "react-bootstrap";
 import {
-  markMoveAsFavorite,
-  storeMovesData,
+  markMovieAsFavourite,
+  storeMoviesData,
   addFormatedDate,
   getActorsData
 } from "../../helpers";
-import "./moves.css";
-import MoveModal from "./moveModal";
+import "./movies.css";
+import  MovieModal from "./MovieModal";
 
-class Moves extends Component {
+class Movies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      moves: [],
+      movies: [],
       actors: [],
       showModal: false,
       leadActor: ''
@@ -23,38 +23,38 @@ class Moves extends Component {
 
   componentDidMount() {
     const actors = getActorsData();
-    const movesData = addFormatedDate();
+    const moviesData = addFormatedDate();
     this.setState({
-      moves: movesData,
+      movies: moviesData,
       actors
     });
   }
 
-  handleFavorite = ({ event, actor, id }) => {
+  handleFavourite = ({ event, actor, id }) => {
     event.preventDefault();
-    const updatedMoves = markMoveAsFavorite({ actor, id });
-    storeMovesData(updatedMoves).then(() => {
-      this.setState({ moves: addFormatedDate() });
+    const updatedMovies = markMovieAsFavourite({ actor, id });
+    storeMoviesData(updatedMovies).then(() => {
+      this.setState({ movies: addFormatedDate() });
     });
   };
 
   onHideModal = () => {
-    this.setState({ showModal: false, moveDate: {} });
+    this.setState({ showModal: false, movieDate: {} });
   };
 
-  onShowModal = moveDate => {
-    this.setState({ showModal: true, moveDate });
+  onShowModal = movieDate => {
+    this.setState({ showModal: true, movieDate });
   };
 
-  filterMoves = (moves = []) => {
+  filterMovies = (movies = []) => {
     const { leadActor } = this.state;
     if (leadActor) {
-      return moves.length && moves.filter(move => {
-        const actor = move['Bond Actor'].toLowerCase();
+      return movies.length && movies.filter(movie => {
+        const actor = movie['Bond Actor'].toLowerCase();
         return actor.includes(leadActor.toLowerCase());
       });
     }
-    return moves;
+    return movies;
   };
 
   handleSearchChange = e => {
@@ -63,48 +63,48 @@ class Moves extends Component {
   }
 
   render() {
-    const { moves, actors, showModal, moveDate } = this.state;
+    const { movies, actors, showModal, movieDate } = this.state;
     return (
-      <div className="moves">
+      <div className="movies">
         <Row>
           <Col xs={12} className="search">
             <Form.Control onChange={this.handleSearchChange} name="leadActor" placeholder="Search by Lead actor" />
           </Col>
         </Row>
         <Row>
-          <MoveModal {...moveDate} />
+          <MovieModal {...movieDate} />
           {actors.map(
             actor =>
               actor &&
-              this.filterMoves(moves[actor]).map(move => {
+              this.filterMovies(movies[actor]).map(movie => {
                 const newProps = {
-                  title: move["Film"],
-                  image: move.ImageURL,
-                  actor: move["Bond Actor"],
-                  release: move["UK release date"]
+                  title: movie["Film"],
+                  image: movie.ImageURL,
+                  actor: movie["Bond Actor"],
+                  release: movie["UK release date"]
                 };
                 const modalProps = {
                   ...newProps,
                   show: showModal,
                   onHide: this.onHideModal,
-                  description: move["Description"],
-                  actor: move["Bond Actor"]
+                  description: movie["Description"],
+                  actor: movie["Bond Actor"]
                 };
                 const cardProps = {
                   ...newProps,
                   onShowModal: () =>
                     this.onShowModal({ ...newProps, ...modalProps }),
-                  isFavorite: move.isFavorite,
+                  isFavourite: movie.isFavourite,
                   onClick: event =>
-                    this.handleFavorite({
+                    this.handleFavourite({
                       event,
                       actor,
-                      id: move.id
+                      id: movie.id
                     })
                 };
                 return (
-                  <Col key={move.id} xs={12} sm={12} md={4}>
-                    <MoveCard {...cardProps} />
+                  <Col key={movie.id} xs={12} sm={12} md={4}>
+                    <MovieCard {...cardProps} />
                   </Col>
                 );
               })
@@ -115,4 +115,4 @@ class Moves extends Component {
   }
 }
 
-export default Moves;
+export default Movies;

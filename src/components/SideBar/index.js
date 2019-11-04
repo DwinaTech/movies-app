@@ -17,7 +17,7 @@ const SideBar = () => {
       defaultActiveKey={activeKey}
     >
       <Nav.Item>
-        <Nav.Link disabled>Moves:</Nav.Link>
+        <Nav.Link disabled>movies:</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="/" as={Link} to="/">
@@ -25,17 +25,17 @@ const SideBar = () => {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="/moves" as={Link} to="/moves">
-          Moves
+        <Nav.Link eventKey="/movies" as={Link} to="/movies">
+          movies
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="/favorite" as={Link} to="/favorite">
-          Favorite
+        <Nav.Link eventKey="/favourite" as={Link} to="/favourite">
+          favourite
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="/add-move" as={Link} to="/add-move">
+        <Nav.Link eventKey="/add-movie" as={Link} to="/add-movie">
           Add Film
         </Nav.Link>
       </Nav.Item>

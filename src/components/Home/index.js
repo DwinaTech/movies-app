@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import MoveCard from "../Moves/MoveCard";
+import MovieCard from "../Movies/MovieCard";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import {
-  markMoveAsFavorite,
-  storeMovesData,
+  markMovieAsFavourite,
+  storeMoviesData,
   addFormatedDate,
   getActorsData
 } from "../../helpers";
 import "./home.css";
-import MoveModal from "../Moves/moveModal";
+import MovieModal from "../Movies/MovieModal";
 
 class Home extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Home extends Component {
     this.state = {
       to: "2000-01-01",
       from: "2019-01-01",
-      moves: [],
+      movies: [],
       actors: [],
       showModal: false
     };
@@ -24,66 +24,66 @@ class Home extends Component {
 
   componentDidMount() {
     const actors = getActorsData();
-    const movesData = addFormatedDate();
+    const moviesData = addFormatedDate();
     this.setState({
-      moves: movesData,
+      movies: moviesData,
       actors
     });
   }
 
-  filterMoves = moves => {
+  filterMovies = movies => {
     const { from, to } = this.state;
     if (from && to) {
-      return moves.filter(
-        move =>
-          (move.date > from && move.date < to) ||
-          (move.date < from && move.date > to)
+      return movies.filter(
+        movie =>
+          (movie.date > from && movie.date < to) ||
+          (movie.date < from && movie.date > to)
       );
     }
     return [];
   };
 
-  handleFavorite = ({ event, actor, id }) => {
+  handleFavourite = ({ event, actor, id }) => {
     event.preventDefault();
-    const updatedMoves = markMoveAsFavorite({ actor, id });
-    storeMovesData(updatedMoves).then(() => {
-      this.setState({ moves: addFormatedDate() });
+    const updatedMovies = markMovieAsFavourite({ actor, id });
+    storeMoviesData(updatedMovies).then(() => {
+      this.setState({ movies: addFormatedDate() });
     });
   };
 
-  renderMoves = () => {
-    const { actors, moves, showModal } = this.state;
+  renderMovies = () => {
+    const { actors, movies, showModal } = this.state;
     return (
       actors.length &&
       actors.map(actor => {
-        return this.filterMoves(moves[actor]).map(move => {
+        return this.filterMovies(movies[actor]).map(movie => {
           const newProps = {
-            title: move["Film"],
-            image: move.ImageURL,
-            actor: move["Bond Actor"],
-            release: move["UK release date"]
+            title: movie["Film"],
+            image: movie.ImageURL,
+            actor: movie["Bond Actor"],
+            release: movie["UK release date"]
           };
           const modalProps = {
             ...newProps,
             show: showModal,
             onHide: this.onHideModal,
-            description: move["Description"],
-            actor: move["Bond Actor"]
+            description: movie["Description"],
+            actor: movie["Bond Actor"]
           };
           const cardProps = {
             ...newProps,
             onShowModal: () => this.onShowModal({ ...newProps, ...modalProps }),
-            isFavorite: move.isFavorite,
+            isFavourite: movie.isFavourite,
             onClick: event =>
-              this.handleFavorite({
+              this.handleFavourite({
                 event,
                 actor,
-                id: move.id
+                id: movie.id
               })
           };
           return (
-            <Col key={move.id} xs={12} sm={12} md={4}>
-              <MoveCard {...cardProps} />
+            <Col key={movie.id} xs={12} sm={12} md={4}>
+              <MovieCard {...cardProps} />
             </Col>
           );
         });
@@ -96,19 +96,19 @@ class Home extends Component {
   };
 
   onHideModal = () => {
-    this.setState({ showModal: false, moveDate: {} });
+    this.setState({ showModal: false, movieDate: {} });
   };
 
-  onShowModal = moveDate => {
-    this.setState({ showModal: true, moveDate });
+  onShowModal = movieDate => {
+    this.setState({ showModal: true, movieDate });
   };
 
   render() {
-    const { from, to, moveDate } = this.state;
+    const { from, to, movieDate } = this.state;
     return (
       <React.Fragment>
-        <MoveModal {...moveDate} />
-        <Row className="moves">
+        <MovieModal {...movieDate} />
+        <Row className="movies">
           <Col xs={12} sm={12} md={8}>
             <Form>
               <Form.Group as={Row} controlId="formHorizontalEmail">
@@ -140,12 +140,12 @@ class Home extends Component {
             </Form>
           </Col>
           <Col xs={12} md={4} className="create-film">
-            <Button as="a" href="/add-move">
+            <Button as="a" href="/add-movie">
               Create
             </Button>
           </Col>
         </Row>
-        <Row className="moves">{this.renderMoves()}</Row>
+        <Row className="movies">{this.renderMovies()}</Row>
       </React.Fragment>
     );
   }

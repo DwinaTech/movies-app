@@ -1,19 +1,19 @@
 import React from "react";
 import SideBar from "../components/SideBar";
 import Home from "../components/Home";
-import Moves from "../components/Moves";
-import data from "../data/moves.json";
-import AddMove from "../components/AddMove.js/index.js";
-import Favorites from "../components/Favorites.js/index.js";
+import movies from "../components/Movies";
+import data from "../data/movies.json";
+import AddMovie from "../components/AddMovie";
+import Favourites from "../components/Favourites";
 import { Container, Row, Col } from "react-bootstrap";
-import { storeMovesData, getMovesData } from "../helpers";
+import { storeMoviesData, getMoviesData } from "../helpers";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./routes.css";
 
 function Routes() {
-  const filmsData = Object.keys(getMovesData() || {});
+  const filmsData = Object.keys(getMoviesData() || {});
   if (!filmsData || !filmsData.length) {
-    storeMovesData(data);
+    storeMoviesData(data);
   }
 
   return (
@@ -25,9 +25,9 @@ function Routes() {
           </Col>
           <Col className="main-contents" xs={9} md={10}>
             <Route exact path="/" component={Home} />
-            <Route path="/moves" component={Moves} />
-            <Route path="/favorite" component={Favorites} />
-            <Route path="/add-move" component={AddMove} />
+            <Route path="/movies" component={movies} />
+            <Route path="/favourite" component={Favourites} />
+            <Route path="/add-movie" component={AddMovie} />
           </Col>
         </Row>
       </Container>

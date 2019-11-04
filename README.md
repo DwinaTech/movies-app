@@ -1,12 +1,12 @@
-## Move Application:
+## movie Application:
 
 ### Quick view
 - To visualize the App in quick way you can visit it live on `heroku` by press this link: https://guarded-refuge-70090.herokuapp.com/
 ### How to use the App locally :-
 
-- Clone the repository locally `git clone git@github.com:DwinaTech/moves-app.git`
+- Clone the repository locally `git clone git@github.com:DwinaTech/movies-app.git`
 
-- Navigate to main directory `cd moves-app`
+- Navigate to main directory `cd movies-app`
 
 - Run `npm install` to install node modules
 
@@ -20,22 +20,22 @@
 
 - Home Page:
     - Add new film by press `Create` button
-    - Find moves between two different dates
-    - View full details of a move by duple press a move card `image`
-    - Add a move to your favorite moves list by press a move card `footer`
-    - Remove a move from favorite list by press a move card `footer` if already market as favorite
+    - Find movies between two different dates
+    - View full details of a movie by duple press a movie card `image`
+    - Add a movie to your favourite movies list by press a movie card `footer`
+    - Removie a movie from favourite list by press a movie card `footer` if already market as favourite
 
-- Moves Page:
-    - Display all moves
-    - Find a move by its `lead actor`
-    - View full details of a move by duple press a move card `image`
-    - Add a move to your favorite moves list by press a move card `footer`
-    - Remove a move from favorite list by press a move card `footer` if already market as favorite
+- Movies Page:
+    - Display all movies
+    - Find a movie by its `lead actor`
+    - View full details of a movie by duple press a movie card `image`
+    - Add a movie to your favourite movies list by press a movie card `footer`
+    - Removie a movie from favourite list by press a movie card `footer` if already market as favourite
 
-- Favorite Page:
-    - Display all moves are selected as favorite
-    - View full details of a move by duple press a move card `image`
-    - Remove a move from favorite list by press a move card `footer`
+- Favourite Page:
+    - Display all movies are selected as favourite
+    - View full details of a movie by duple press a movie card `image`
+    - Removie a movie from favourite list by press a movie card `footer`
 
 ### The used technologies:
 - CSS

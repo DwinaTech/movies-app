@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { updateMovesData, getMovesData } from "../../helpers";
+import { updateMoviesData, getMoviesData } from "../../helpers";
 import AlertComponent from "./AlertComponent";
 import "./index.css";
 
-export class AddMove extends Component {
+class AddMovie extends Component {
   state = {
     title: "",
     actor: "",
@@ -51,8 +51,8 @@ export class AddMove extends Component {
       Description: description,
       "Box Office(Millions)": boxOffice
     };
-    const currentData = getMovesData();
-    const isMoveExist = currentData["Bond Films"] && currentData["Bond Films"].filter(film => {
+    const currentData = getMoviesData();
+    const isMovieExist = currentData["Bond Films"] && currentData["Bond Films"].filter(film => {
       if (
         film.Film === filmData.Film &&
         film["Bond Actor"] === filmData["Bond Actor"] &&
@@ -66,7 +66,7 @@ export class AddMove extends Component {
       return false;
     });
     // Do not add new film data if already exist
-    if (isMoveExist && isMoveExist.length) {
+    if (isMovieExist && isMovieExist.length) {
       this.setState({
         alertMessage: "This film already exist!",
         alertHeading: "Error:",
@@ -75,7 +75,7 @@ export class AddMove extends Component {
       });
       return;
     }
-    updateMovesData(filmData, "Bond Films");
+    updateMoviesData(filmData, "Bond Films");
     this.setState({
       alertMessage: "The film added successfully!",
       alertHeading: "Success:",
@@ -102,7 +102,7 @@ export class AddMove extends Component {
       description
     } = this.state;
     return (
-      <Row className="add-move">
+      <Row className="add-movie">
         <Col xs={12} md={{ span: 8, offset: 2 }}>
           {showAlert && (
             <AlertComponent
@@ -112,9 +112,9 @@ export class AddMove extends Component {
               message={alertMessage}
             />
           )}
-          <h1>Add new move:</h1>
+          <h1>Add new movie:</h1>
           <Form>
-            <Form.Group controlId="addMoveFormTitle">
+            <Form.Group controlId="addmovieFormTitle">
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
@@ -123,7 +123,7 @@ export class AddMove extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="addMoveFormActor">
+            <Form.Group controlId="addmovieFormActor">
               <Form.Label>Actor name</Form.Label>
               <Form.Control
                 type="text"
@@ -132,7 +132,7 @@ export class AddMove extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="addMoveFormRelease">
+            <Form.Group controlId="addmovieFormRelease">
               <Form.Label>Release Date</Form.Label>
               <Form.Control
                 type="date"
@@ -141,7 +141,7 @@ export class AddMove extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="addMoveFormImage">
+            <Form.Group controlId="addmovieFormImage">
               <Form.Label>Image URL</Form.Label>
               <Form.Control
                 type="text"
@@ -150,7 +150,7 @@ export class AddMove extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="addMoveFormBoxOffice">
+            <Form.Group controlId="addmovieFormBoxOffice">
               <Form.Label>Box Office</Form.Label>
               <Form.Control
                 type="text"
@@ -159,7 +159,7 @@ export class AddMove extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="addMoveFormDescription">
+            <Form.Group controlId="addmovieFormDescription">
               <Form.Label>Description</Form.Label>
               <Form.Control
                 rows="3"
@@ -177,4 +177,4 @@ export class AddMove extends Component {
   }
 }
 
-export default AddMove;
+export default AddMovie;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button, Image } from "react-bootstrap";
 
-const MoveModal = ({
+const MovieModal = ({
   show,
   title,
   actor,
@@ -36,4 +36,4 @@ const MoveModal = ({
   );
 };
 
-export default MoveModal;
+export default MovieModal;
