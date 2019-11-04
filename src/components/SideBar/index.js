@@ -17,7 +17,7 @@ const SideBar = () => {
       defaultActiveKey={activeKey}
     >
       <Nav.Item>
-        <Nav.Link disabled>movies:</Nav.Link>
+        <Nav.Link disabled>Movies:</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="/" as={Link} to="/">
