@@ -26,12 +26,12 @@ const SideBar = () => {
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="/movies" as={Link} to="/movies">
-          movies
+          Movies
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="/favourite" as={Link} to="/favourite">
-          favourite
+          Favourite
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
